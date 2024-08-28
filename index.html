@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Church Management System</h1>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Add Member Section -->
+            <section>
+                <h2>Add Member</h2>
+                <form id="add-member-form">
+                    <div class="form-group">
+                        <label for="memberId">Member ID</label>
+                        <input type="text" id="memberId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="text" id="age" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="maritalStatus">Marital Status</label>
+                        <select id="maritalStatus" required>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                        </select>
+                    </div>
+                    <div class="form-group relation-container">
+                        <label class="inline-label">Relation:</label>
+                        <input type="radio" id="father" name="relation" value="Father's" required>
+                        <label for="father" class="inline-label">Father's Name</label>
+                        <input type="radio" id="husband" name="relation" value="Husband's">
+                        <label for="husband" class="inline-label">Husband's Name</label>
+                        <input type="text" id="relationName" placeholder="Enter Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="weddingDay">Wedding Day (if Married)</label>
+                        <input type="date" id="weddingDay">
+                    </div>
+                    <div class="form-group">
+                        <label for="paying3Percent">Paying 3%</label>
+                        <select id="paying3Percent" required>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payingSubscription">Paying Subscription</label>
+                        <select id="payingSubscription" required>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <button type="submit">Add Member</button>
+                </form>
+            </section>
+
+            <!-- Search Member Section -->
+            <section>
+                <h2>Search Member</h2>
+                <form id="search-member-form">
+                    <div class="form-group">
+                        <label for="searchMemberId">Enter Member ID</label>
+                        <input type="text" id="searchMemberId" required>
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+                <div id="member-details"></div>
+            </section>
+
+            <!-- Enter Subscription Amount Section -->
+            <section id="subscription-form" class="hidden">
+                <h2>Enter Subscription Amount</h2>
+                <form id="subscription-form-fields">
+                    <input type="hidden" id="subMemberId">
+                    <div class="form-group">
+                        <label for="churchSubscription">Church Subscription</label>
+                        <input type="number" id="churchSubscription">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensFellowship">Men's Fellowship</label>
+                        <input type="number" id="mensFellowship">
+                    </div>
+                    <div class="form-group">
+                        <label for="womensFellowship">Women's Fellowship</label>
+                        <input type="number" id="womensFellowship">
+                    </div>
+                    <div class="form-group">
+                        <label for="youthFellowship">Youth Fellowship</label>
+                        <input type="number" id="youthFellowship">
+                    </div>
+                    <div class="form-group">
+                        <label for="dfs">DFS</label>
+                        <input type="number" id="dfs">
+                    </div>
+                    <div class="form-group">
+                        <label for="auctionDue">Auction Due</label>
+                        <input type="number" id="auctionDue">
+                    </div>
+                    <div class="form-group">
+                        <label for="maintenance">Maintenance</label>
+                        <input type="number" id="maintenance">
+                    </div>
+                    <div class="form-group">
+                        <label for="paidOn">Paid On</label>
+                        <input type="date" id="paidOn" required>
+                    </div>
+                    <div class="form-group">
+                        <label>For the months of:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="monthJanuary" value="January"> January</label>
+                            <label><input type="checkbox" id="monthFebruary" value="February"> February</label>
+                            <label><input type="checkbox" id="monthMarch" value="March"> March</label>
+                            <label><input type="checkbox" id="monthApril" value="April"> April</label>
+                            <label><input type="checkbox" id="monthMay" value="May"> May</label>
+                            <label><input type="checkbox" id="monthJune" value="June"> June</label>
+                            <label><input type="checkbox" id="monthJuly" value="July"> July</label>
+                            <label><input type="checkbox" id="monthAugust" value="August"> August</label>
+                            <label><input type="checkbox" id="monthSeptember" value="September"> September</label>
+                            <label><input type="checkbox" id="monthOctober" value="October"> October</label>
+                            <label><input type="checkbox" id="monthNovember" value="November"> November</label>
+                            <label><input type="checkbox" id="monthDecember" value="December"> December</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalSubscription">Total amount as per the Subscription Card</label>
+                        <input type="number" id="totalSubscription" readonly>
+                    </div>
+                    <button type="submit">Submit Subscription</button>
+                </form>
+            </section>
+
+            <!-- Enter Other Offerings Section -->
+            <section>
+                <h2>Enter Other Offerings</h2>
+                <form id="other-offerings-form-fields">
+                    <div class="form-group">
+                        <label for="worshipOffering">Worship Offering</label>
+                        <input type="number" id="worshipOffering">
+                    </div>
+                    <div class="form-group">
+                        <label for="thanksOffering">Thanks Offering</label>
+                        <input type="number" id="thanksOffering">
+                    </div>
+                    <div class="form-group">
+                        <label for="churchMaintenance">Church Maintenance</label>
+                        <input type="number" id="churchMaintenance">
+                    </div>
+                    <div class="form-group">
+                        <label for="auction">Auction</label>
+                        <input type="number" id="auction">
+                    </div>
+                    <div class="form-group">
+                        <label for="lukeChurchOffering">Luke Church Offering</label>
+                        <input type="number" id="lukeChurchOffering">
+                    </div>
+                    <div class="form-group">
+                        <label for="lukeChurchSubscription">Luke Church Subscription Amount</label>
+                        <input type="number" id="lukeChurchSubscription">
+                    </div>
+                    <div class="form-group">
+                        <label for="others">Others</label>
+                        <input type="number" id="others">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalOtherOfferings">Total Other Offerings</label>
+                        <input type="number" id="totalOtherOfferings" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="paidOnOther">Paid On</label>
+                        <input type="date" id="paidOnOther" required>
+                    </div>
+                    <button type="submit">Submit Offerings</button>
+                </form>
+            </section>
+
+            <!-- Get Total Amount by Date Section -->
+            <section>
+                <h2>Get Total Amount by Date</h2>
+                <form id="date-report-form">
+                    <div class="form-group">
+                        <label for="reportDate">Enter Date</label>
+                        <input type="date" id="reportDate" required>
+                    </div>
+                    <button type="submit">Get Total Amount</button>
+                </form>
+                <div id="date-report-details"></div>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
